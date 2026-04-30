@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/cyberpunk_ui/panels/button.png" id="1_panel"]
+
+[node name="CyberPanel" type="NinePatchRect"]
+texture = ExtResource("1_panel")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 0
+axis_stretch_vertical = 0

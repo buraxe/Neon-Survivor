@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/level_up.gd" id="1_lu"]
+[ext_resource type="Theme" path="res://assets/cyberpunk_ui/cyberpunk_theme.tres" id="2_theme"]
+[ext_resource type="Shader" path="res://assets/cyberpunk_ui/blur.gdshader" id="3_blur"]
+
+[sub_resource type="ShaderMaterial" id="blur_mat"]
+shader = ExtResource("3_blur")
+shader_parameter/blur_amount = 6.0
+
+[node name="LevelUp" type="CanvasLayer"]
+layer = 50
+process_mode = 3
+script = ExtResource("1_lu")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("blur_mat")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DimOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Root/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.7, 0.7, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.15, 0.12, 0.0, 0.3)
+text = "SISTEM YUKSELTMESI"
+horizontal_alignment = 1
+
+[node name="UpgradeContainer" type="VBoxContainer" parent="Root/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RerollButton" type="Button" parent="Root/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(200, 40)
+text = "YENILE (5)"
+
+[node name="SkipButton" type="Button" parent="Root/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(200, 40)
+text = "GEC"

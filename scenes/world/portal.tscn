@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/portal.gd" id="1_p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 40.0
+
+[node name="Portal" type="Area2D"]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1_p")
+groups = [&"portals"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.2, 0.8, 1.0, 0.6)
+polygon = PackedVector2Array(0, -30, 20, -20, 30, 0, 20, 20, 0, 30, -20, 20, -30, 0, -20, -20)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 30
+lifetime = 1.5
+emission_shape = 1
+emission_sphere_radius = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.2, 0.9, 1.0, 0.8)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -60.0
+offset_right = 50.0
+offset_bottom = -40.0
+horizontal_alignment = 1
+text = "PORTAL"

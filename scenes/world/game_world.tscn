@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/game_world.gd" id="1_gw"]
+[ext_resource type="Script" path="res://scripts/world/camera.gd" id="2_cam"]
+[ext_resource type="PackedScene" path="res://scenes/world/background_grid.tscn" id="3_bg"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_hud"]
+[ext_resource type="Script" path="res://scripts/world/chunk_generator.gd" id="5_cg"]
+[ext_resource type="Script" path="res://scripts/world/enemy_spawner.gd" id="6_es"]
+[ext_resource type="Script" path="res://scripts/effects/vfx_manager.gd" id="7_vfx"]
+[ext_resource type="Script" path="res://scripts/world/special_manager.gd" id="8_sm"]
+
+[ext_resource type="Script" path="res://scripts/effects/crt_overlay.gd" id="9_crt"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="10_pm"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/joystick.tscn" id="11_joy"]
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource("1_gw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0
+script = ExtResource("2_cam")
+
+[node name="BackgroundGrid" parent="." instance=ExtResource("3_bg")]
+
+[node name="ChunkGenerator" type="Node2D" parent="."]
+script = ExtResource("5_cg")
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("6_es")
+
+[node name="VFXManager" type="Node2D" parent="."]
+script = ExtResource("7_vfx")
+
+[node name="SpecialManager" type="Node2D" parent="."]
+script = ExtResource("8_sm")
+
+[node name="HUD" parent="." instance=ExtResource("4_hud")]
+
+[node name="CRTLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="CRTOverlay" type="ColorRect" parent="CRTLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_crt")
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_pm")]

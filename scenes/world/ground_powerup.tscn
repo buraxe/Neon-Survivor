@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/ground_powerup.gd" id="1_pu"]
+
+[node name="GroundPowerup" type="Area2D"]
+collision_layer = 16
+collision_mask = 1
+monitoring = true
+script = ExtResource("1_pu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

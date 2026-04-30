@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://player1234567890"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_pl"]
+[ext_resource type="Script" path="res://scripts/player/shape_drawer.gd" id="2_sd"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_manager.gd" id="3_wm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
+radius = 100.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 32
+script = ExtResource("1_pl")
+
+[node name="ShapeDrawer" type="Node2D" parent="."]
+script = ExtResource("2_sd")
+shape_radius = 18.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_pickup")
+
+[node name="WeaponOrbit" type="Node2D" parent="."]
+
+[node name="WeaponManager" type="Node2D" parent="."]
+script = ExtResource("3_wm")
+
+[node name="UltimateTimer" type="Timer" parent="."]
+process_mode = 4
+wait_time = 5.0
+one_shot = true
+autostart = false
